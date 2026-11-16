@@ -6,7 +6,7 @@ This is a Roguelike game project built in Python using the `pygame` module.
 
 | Gameplay 1 | Gameplay 2 |
 | :---: | :---: |
-| ![Gameplay 1](assets/photo.png) | ![Gameplay 2](assets/photo1.png) |
+| ![Gameplay 1](assets/photo.png) | ![Gameplay 2](assets/photo3.png) |
 
 **The story behind the project:**
 It all started with the idea of making a farming game like *Stardew Valley*. However, while looking for tutorials, I got frustrated seeing that 99% of videos use Pygame to make *Flappy Bird* clones. So, I decided to take my own path and build something different from scratch.
@@ -31,6 +31,11 @@ I see it like the historical **Garry Kasparov vs. Deep Blue** match: the machine
 
 ## 🤝 Feedback & Contributions
 This is my first version and I'm open to learning. If you want to suggest an improvement, report a bug, or tell me what flaws this first version has, I will gladly accept your feedback!
+
+## 🎨 Update: Enemy Sprites
+*   **What was done**: Enemy rectangles were replaced with sprites cropped from a sprite sheet.
+*   **How it works**: The sheet is loaded only once using `pygame.image.load().convert_alpha()`, and `.subsurface()` is used to extract each character. `random.sample` is used so each enemy looks different at the start of the game.
+*   **Hitbox vs Sprite**: The 24x24 pixel collision hitbox is maintained, but the image is drawn centered on top of it. This optimizes RAM usage and keeps the gameplay fair.
 
 ---
 *Thanks for reading and for checking out my project. Have a nice day and be careful :3!*

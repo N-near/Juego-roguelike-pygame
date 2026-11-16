@@ -1,10 +1,21 @@
 import math
+import random
 import pygame
 #Inicindo pygame
 pygame.init()
 
 #Creando la pantalla y su complexion (anchoxalto)
 p = pygame.display.set_mode((960,720))
+
+COORDENADAS_SPRITES = [
+    (17, 25, 73, 100), (97, 25, 90, 100), (185, 12, 91, 113), (283, 25, 73, 100),
+    (371, 21, 78, 104), (460, 25, 73, 100), (549, 26, 73, 99), (633, 25, 82, 100),
+    (17, 158, 73, 100), (97, 159, 81, 99), (190, 150, 81, 108), (283, 158, 73, 100),
+    (367, 167, 82, 91), (456, 154, 77, 104), (549, 145, 73, 113), (637, 158, 73, 100),
+]
+hoja_enemigos = pygame.image.load("Jugador/sprite3.png").convert_alpha()
+sprites_enemigos = [hoja_enemigos.subsurface(coordenadas) for coordenadas in COORDENADAS_SPRITES]
+indices_sprites_enemigos = random.sample(range(len(sprites_enemigos)), 3)
 
 sprite_Jugador = pygame.image.load("Jugador/sprite4.png").convert_alpha()
 print(sprite_Jugador.get_size())
@@ -48,9 +59,9 @@ velocidad_proyectil = 300
 daño_proyectil = 1
 proyectiles = []
 enemigos = [
-    {"rect": pygame.Rect(900, 60, 24, 24), "x": 900.0, "y": 60.0, "velocidad": 35, "vida": 3},
-    {"rect": pygame.Rect(900, 650, 24, 24), "x": 900.0, "y": 650.0, "velocidad": 35, "vida": 3},
-    {"rect": pygame.Rect(60, 650, 24, 24), "x": 60.0, "y": 650.0, "velocidad": 35, "vida": 3},
+    {"rect": pygame.Rect(900, 60, 24, 24), "x": 900.0, "y": 60.0, "velocidad": 35, "vida": 3, "sprite": sprites_enemigos[indices_sprites_enemigos[0]]},
+    {"rect": pygame.Rect(900, 650, 24, 24), "x": 900.0, "y": 650.0, "velocidad": 35, "vida": 3, "sprite": sprites_enemigos[indices_sprites_enemigos[1]]},
+    {"rect": pygame.Rect(60, 650, 24, 24), "x": 60.0, "y": 650.0, "velocidad": 35, "vida": 3, "sprite": sprites_enemigos[indices_sprites_enemigos[2]]},
 ]
 
 juego_encendido = True
@@ -213,7 +224,8 @@ while juego_encendido:
             pygame.draw.rect(p, 'limegreen', (x_cultivo + 16, y_cultivo + 5, 9, 5))
 
     for enemigo in enemigos:
-        pygame.draw.rect(p, "firebrick", enemigo["rect"])
+        rect_sprite = enemigo["sprite"].get_rect(center=enemigo["rect"].center)
+        p.blit(enemigo["sprite"], rect_sprite)
 
     for proyectil in proyectiles:
         pygame.draw.rect(p, "gold", proyectil["rect"])
