@@ -32,10 +32,11 @@ I see it like the historical **Garry Kasparov vs. Deep Blue** match: the machine
 ## 🤝 Feedback & Contributions
 This is my first version and I'm open to learning. If you want to suggest an improvement, report a bug, or tell me what flaws this first version has, I will gladly accept your feedback!
 
-## 🎨 Update: Enemy Sprites
-*   **What was done**: Enemy rectangles were replaced with sprites cropped from a sprite sheet.
-*   **How it works**: The sheet is loaded only once using `pygame.image.load().convert_alpha()`, and `.subsurface()` is used to extract each character. `random.sample` is used so each enemy looks different at the start of the game.
-*   **Hitbox vs Sprite**: The 24x24 pixel collision hitbox is maintained, but the image is drawn centered on top of it. This optimizes RAM usage and keeps the gameplay fair.
+
+## 🌊 Update: Wave System & Roguelike Upgrades
+* **Wave Manager (`oleadas.py`)**: Implemented a modular, time-based wave progression system (`WaveManager` & `WaveConfig`). Enemies dynamically spawn off-screen around the edges using delta time, scaling in quantity, speed, and health as rounds progress.
+* **Between-Round Upgrades (`mejoras.py`)**: Clearing a wave pauses the game and displays 3 randomized upgrade cards selectable via keyboard (`1`, `2`, `3`) or mouse click. Players can boost fire rate, projectile damage, movement speed, max health, or heal (filtered out when already at full HP).
+* **Sprite & Hitbox Optimization**: Enemy sprites are loaded once from a sprite sheet using `.convert_alpha()` and sliced via `.subsurface()`. Each spawned enemy keeps a fair `24x24` collision hitbox while rendering its sprite centered on top.
 
 ---
 *Thanks for reading and for checking out my project. Have a nice day and be careful :3!*

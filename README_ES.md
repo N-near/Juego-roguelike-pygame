@@ -32,10 +32,11 @@ Lo veo como la histórica partida de **Garry Kasparov vs. Deep Blue**: la victor
 ## 🤝 Comentarios y Contribuciones
 Esta es mi primera versión y estoy abierto a aprender. Si quieres sugerir alguna mejora, reportar un bug o decirme qué fallos tiene esta primera versión, ¡con gusto aceptaré tus respuestas!
 
-## 🎨 Actualización: Sprites de Enemigos
-*   **Qué se hizo**: Se reemplazaron los rectángulos de los enemigos por sprites recortados de una hoja de imágenes (sprite sheet).
-*   **Cómo funciona**: Se carga la hoja una sola vez usando `pygame.image.load().convert_alpha()` y se usa `.subsurface()` para extraer cada personaje. Se usa `random.sample` para que cada enemigo tenga un aspecto distinto al iniciar.
-*   **Hitbox vs Sprite**: Se mantiene la hitbox de colisión de 24x24 píxeles, pero se dibuja la imagen centrada sobre ella. Esto optimiza la memoria RAM y mantiene el gameplay justo.
+
+## 🌊 Actualización: Sistema de Oleadas y Mejoras Roguelike
+* **Gestor de Oleadas (`oleadas.py`)**: Se implementó un sistema modular de progresión por rondas basado en *delta time* (`WaveManager` y `WaveConfig`). Los enemigos aparecen fuera de cámara en los bordes de la pantalla, escalando progresivamente en cantidad, velocidad y vida en cada oleada.
+* **Mejoras entre Rondas (`mejoras.py`)**: Al limpiar una oleada, el juego se pausa y muestra 3 cartas de mejora aleatorias seleccionables con el teclado (`1`, `2`, `3`) o con el ratón. Permiten mejorar la cadencia de disparo, el daño, la velocidad de movimiento, la vida máxima o curarse (filtrando la curación si la vida ya está al máximo).
+* **Optimización de Sprites y Hitbox**: Los sprites de los enemigos se cargan una sola vez desde la hoja de sprites usando `.convert_alpha()` y se recortan con `.subsurface()`. Cada enemigo generado conserva una *hitbox* justa de `24x24` píxeles mientras su sprite se dibuja centrado encima.
 
 ---
 *Gracias por leer y por ver mi proyecto. ¡Que tengas un buen día y cuidado :3!*
