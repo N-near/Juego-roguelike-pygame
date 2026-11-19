@@ -16,9 +16,20 @@ Este es el primer paso. Todavía falta mucho, pero la meta es seguir mejorando p
 ## 🚀 Hoja de ruta (Próximas mejoras)
 Actualmente el proyecto está en su primera versión. Los siguientes objetivos son:
 - [ ] Agregar más animaciones al jugador.
-- [ ] Implementar enemigos.
-- [ ] Añadir un sistema de oleadas.
 - [ ] (Nota: El tamaño de los sprites está documentado en el archivo con el mismo nombre dentro del proyecto).
+
+## ⚙️ Instalación y ejecución
+
+Se requiere Python 3.10 o posterior. Desde la carpeta raíz del proyecto, crea y activa un entorno virtual, instala Pygame e inicia el juego:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install pygame
+python main.py
+```
+
+En Windows, activa el entorno con `.venv\Scripts\activate` en lugar del comando `source`. Cuando termines de jugar, ejecuta `deactivate` para salir del entorno virtual.
 
 ## 🧠 Filosofía de Desarrollo y Uso de IA
 En este proyecto utilizo herramientas de IA (como Codex CLI en Gentoo) para realizar mejoras y aprender. No creo en el "vibecoding" (dejar que la IA lo haga todo), sino en la IA como un medio para resolver problemas.
